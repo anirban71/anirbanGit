@@ -7,7 +7,9 @@
   function makeRequest($url, $context) {
 
    
-    $fp = @fopen($url, 'r', false, $context) or die(print_r(error_get_last(),true));
+    $fp = @fopen($url, 'r', false, $context) or die(print_r
+
+(error_get_last(),true));
 
       
     if (!$fp) {
@@ -40,10 +42,14 @@
   $authUrl .=":";
   $authUrl .= $client_secret;
   $authUrl .= "@auth.sphere.io/oauth/token";
-  $data = array("grant_type" => "client_credentials", "scope" => "manage_project:$project_key");
+  $data = array("grant_type" => "client_credentials", "scope" => 
+
+"manage_project:$project_key");
   $options = array(
     'http' => array(
-      'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+      'header'  => "Content-type: application/x-www-form-
+
+urlencoded\r\n",
       'method'  => 'POST',
       'content' => http_build_query($data),
     ),
@@ -57,7 +63,7 @@
   // Fetch products
   $productUrl = "https://api.sphere.io/";
   $productUrl .= $project_key;
-  $productUrl .= '/product-projections';
+  $productUrl .= '/product-projections?staged=true&limit=10';
 
   echo $productUrl;
 
